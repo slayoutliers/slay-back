@@ -1,5 +1,6 @@
 package com.slay.outliers.question.domain;
 
+import com.slay.outliers.answer.domain.Answer;
 import com.slay.outliers.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,10 +25,18 @@ public class Question {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Answer> answers = new ArrayList<>();
+
     @Builder
-    public Question(Long id, String content, Member member) {
+    public Question(Long id, String content, Member member, List<Answer> answers) {
         this.id = id;
         this.content = content;
         this.member = member;
+        this.answers = answers;
+    }
+
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
     }
 }

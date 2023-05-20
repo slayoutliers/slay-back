@@ -30,4 +30,8 @@ public class QuestionService {
         List<Question> questions = questionRepository.findAll();
         return QuestionResponse.of(questions);
     }
+
+    public Question findById(Long id) {
+        return questionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("번호에 맞는 질문이 존재하지 않습니다."));
+    }
 }

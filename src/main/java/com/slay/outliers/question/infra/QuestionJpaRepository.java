@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface QuestionJpaRepository extends JpaRepository<Question, Long>, QuestionRepository {
 
@@ -13,4 +14,6 @@ public interface QuestionJpaRepository extends JpaRepository<Question, Long>, Qu
 
     @Query("select q from Question q order by q.id desc")
     List<Question> findAll();
+
+    Optional<Question> findById(Long id);
 }
