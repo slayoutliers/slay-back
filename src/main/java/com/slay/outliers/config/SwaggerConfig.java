@@ -36,6 +36,16 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any()).build();
     }
 
+    @Bean
+    public Docket answerApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("answer")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.slay.outliers.answer.controller"))
+                .paths(PathSelectors.any()).build();
+    }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("slayoutliers API 문서")
