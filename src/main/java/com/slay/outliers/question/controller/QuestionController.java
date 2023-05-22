@@ -20,10 +20,10 @@ public class QuestionController {
     private final MemberService memberService;
 
     @PostMapping("api/questions/members/{id}")
-    public ResponseEntity<QuestionResponse> save(@RequestBody QuestionRequest questionRequest, @PathVariable Long memberId) {
+    public ResponseEntity<QuestionResponse> save(@RequestBody QuestionRequest questionRequest, @PathVariable("id") Long memberId) {
         Member member = memberService.findById(memberId);
         QuestionResponse response = questionService.save(questionRequest, member);
-        return ResponseEntity.created(URI.create("api/questions/" + response.getId() + "/members/" + member.getId())).build();
+        return ResponseEntity.created(URI.create("api/questions/" + response.getId() + "/members/" + member.getId())).body(response);
     }
 
     @GetMapping("/api/questions")
