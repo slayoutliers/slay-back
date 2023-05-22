@@ -27,6 +27,9 @@ public class AnswerResponse {
     }
 
     public static List<AnswerResponse> of(List<Answer> answers) {
+        if(answers == null) {
+            return null;
+        }
         final List<AnswerResponse> answerResponseList = new ArrayList<>();
         answers
                 .forEach(answer -> answerResponseList.add(AnswerResponse.of(answer)));
