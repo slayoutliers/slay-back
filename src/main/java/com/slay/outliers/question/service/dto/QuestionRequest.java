@@ -8,4 +8,8 @@ import lombok.Getter;
 public class QuestionRequest {
 
     private String content;
+
+    protected QuestionRequest() {
+        //no-op
+    }
 }
