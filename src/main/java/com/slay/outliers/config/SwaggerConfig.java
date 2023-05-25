@@ -17,33 +17,39 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Bean
-    public Docket oauthApi() {
+    public Docket memberApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("oauth-member")
+                .groupName("멤버")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.slay.outliers.member.controller"))
-                .paths(PathSelectors.any()).build();
+                .paths(PathSelectors.any())
+                .build()
+                .useDefaultResponseMessages(false);
     }
 
     @Bean
     public Docket questionApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("question")
+                .groupName("질문")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.slay.outliers.question.controller"))
-                .paths(PathSelectors.any()).build();
+                .paths(PathSelectors.any())
+                .build()
+                .useDefaultResponseMessages(false);
     }
 
     @Bean
     public Docket answerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("answer")
+                .groupName("응답")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.slay.outliers.answer.controller"))
-                .paths(PathSelectors.any()).build();
+                .paths(PathSelectors.any())
+                .build()
+                .useDefaultResponseMessages(false);
     }
 
     private ApiInfo apiInfo() {
