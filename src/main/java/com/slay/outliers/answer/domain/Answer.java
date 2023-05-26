@@ -13,18 +13,21 @@ import javax.persistence.*;
 @Entity
 public class Answer {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANSWER_ID")
     private Long id;
     private String content;
     @ManyToOne
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
+    private int status;
 
     @Builder
-    public Answer(Long id, String content, Question question) {
+    public Answer(Long id, String content, Question question, int status) {
         this.id = id;
         this.content = content;
         this.question = question;
+        this.status = status;
     }
 }
