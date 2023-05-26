@@ -24,19 +24,24 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-
     @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
+    private String mood;
 
     @Builder
-    public Question(Long id, String content, Member member, List<Answer> answers) {
+    public Question(Long id, String content, Member member, List<Answer> answers, String mood) {
         this.id = id;
         this.content = content;
         this.member = member;
         this.answers = answers;
+        this.mood = mood;
     }
 
     public void addAnswer(Answer answer) {
         answers.add(answer);
+    }
+
+    public void changeMood(String mood) {
+        this.mood = mood;
     }
 }
