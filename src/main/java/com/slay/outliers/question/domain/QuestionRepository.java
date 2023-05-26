@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface QuestionRepository {
     Question save(Question question);
 
-    List<Question> findAll();
+    List<Question> findAllByMemberId(Long id);
 
-    Optional<Question> findById(Long id);
+    Optional<Question> findById(Long memberId, Long questionId);
 }
