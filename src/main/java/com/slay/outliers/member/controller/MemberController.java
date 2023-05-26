@@ -33,7 +33,6 @@ import java.util.Collections;
 import java.util.Optional;
 
 @PropertySource("classpath:google.properties")
-
 @RestController
 public class MemberController {
 
