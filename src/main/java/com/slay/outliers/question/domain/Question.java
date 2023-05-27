@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
     private String mood;
+    private LocalDateTime dateTime;
 
     @Builder
     public Question(Long id, String content, Member member, List<Answer> answers, String mood) {
@@ -35,6 +37,7 @@ public class Question {
         this.member = member;
         this.answers = answers;
         this.mood = mood;
+        this.dateTime = LocalDateTime.now();
     }
 
     public void addAnswer(Answer answer) {
